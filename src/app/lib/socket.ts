@@ -2,10 +2,11 @@ import { Server } from 'socket.io'
 import { connectToDB } from "@/app/lib/mongodb";
 import { User } from "../../../component/Schema/Userschema";
 import { message } from '../../../component/Schema/Messageschema';
+import { Server as HTTPServer } from "http";
 
 let io: Server;
 
-export function initSocket(server : any) {
+export function initSocket(server : HTTPServer) {
     if(!io) {
         io = new Server(server, {
             path:'/api/socket',

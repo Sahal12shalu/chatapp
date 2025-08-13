@@ -41,6 +41,11 @@ function Body() {
     category:string;
   }
 
+  type Message = {
+  userId: string;
+  lastMessageTime: string;
+};
+
   const { data: session, status } = useSession()
 
   const [Mydata, Setmydata] = useState<UserType[]>([])
@@ -82,7 +87,7 @@ function Body() {
         headers:{'Content-Type' : 'application/json'}
       })
       const data = await res.json()
-      const msgTimeObj = data.message.reduce((acc:Record<string, string>, curr: any) =>{
+      const msgTimeObj = data.message.reduce((acc:Record<string, string>, curr: Message) =>{
         acc[curr.userId] = curr.lastMessageTime;
         return acc
       },{})

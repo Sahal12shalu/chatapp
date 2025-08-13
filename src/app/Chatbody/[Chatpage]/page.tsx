@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Msgdltpopup from '../Msgdltpopup/page';
 import Menumain from '../Menu/Menumain/page';
 import { RiCheckDoubleFill } from "react-icons/ri";
+import Image from 'next/image';
 const socket = io({
   path: '/api/socket'
 })
@@ -82,7 +83,7 @@ function Chatpage() {
       }
     }
     Getmydetails()
-  }, [status])
+  }, [status,id])
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -92,7 +93,7 @@ function Chatpage() {
       setMessage(data.message)
     }
     fetchMessages()
-  }, [status])
+  }, [status,session?.user.id,id])
 
   useEffect(() => {
     if(!id || !session?.user.id) return;
@@ -113,7 +114,7 @@ function Chatpage() {
   }
 
   useEffect(() => {
-    const handleMessageseen =  ({messageIds,receiverId} : Messageseenpayload) => {
+    const handleMessageseen =  ({messageIds} : Messageseenpayload) => {
       setMessage((prev) => 
         prev.map((msg) =>
            messageIds.includes(msg._id) ? {...msg, seen:true} : msg
@@ -183,7 +184,7 @@ function Chatpage() {
             userData.map((value, index) => (
               <div key={index} className='flex items-center'>
                 <Link href='/Chatbody/Body'><FaAngleLeft className='ml-2 md:ml-5 ' /></Link>
-                <img src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'}`} className='h-15  w-15 rounded-full ml-2 md:ml-5' />
+                <Image alt='image' width={400} height={400} src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'}`} className='h-15  w-15 rounded-full ml-2 md:ml-5' />
                 <div className='flex flex-col ml-1 md:ml-3 p-2'>
                   <p className='font-semibold text-lg pl-[-10px] text-white/90'>{value.nickname}</p>
                   <p className='text-md tracking-normal text-white/80'>{value.online ? 'Online' : 'offline'}</p>

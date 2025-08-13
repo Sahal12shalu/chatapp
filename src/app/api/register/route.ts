@@ -6,6 +6,12 @@ import { message } from "../../../../component/Schema/Messageschema";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
+interface UserData {
+  name: string;
+  email: string;
+  password: string;
+}
+
 export async function POST(req: Request) {
   const { name, email, password } = await req.json();
 
@@ -15,7 +21,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "User already exists" }, { status: 404 });
   }
   
-  let userData:any = { name, email}
+  let userData:UserData = { name, email ,password }
   if(password){
   const hashedPassword = await bcrypt.hash(password, 10);
   userData = { ...userData, password:hashedPassword }
