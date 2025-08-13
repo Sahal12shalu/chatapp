@@ -46,7 +46,7 @@ export function LoginFormDemo() {
     }
     
    }
-  }, [status])
+  }, [status,session?.user.image,session?.user.nickname])
   
   return (
     <div className="w-full h-[100vh] flex justify-center items-center">
