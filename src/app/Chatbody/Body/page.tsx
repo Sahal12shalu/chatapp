@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Menupopup from '../Menupopup/page';
 import { BsXLg } from 'react-icons/bs'
 import { io } from 'socket.io-client'
+import Image from 'next/image';
 const socket = io({
   path: '/api/socket'
 })
@@ -50,7 +51,7 @@ function Body() {
   const [Familyusers,Setfamilyusers] = useState([])
   const [Friendsusers,Setfriendsusers] = useState([])
   const [Archieveusers,Setarchieveusers] = useState([])
-  const [Allusers,Setallusers] = useState<any[]>([])
+  const [Allusers,Setallusers] = useState<string[]>([])
   const [Searchbutton,Setseachbutton] = useState(false)
   const [searchTerm,SetsearchTerm] = useState('')
   const [LastmsgTime,SetLastmsgTime] = useState<Record<string,string | null >>({})
@@ -88,7 +89,7 @@ function Body() {
       SetLastmsgTime(msgTimeObj)
     }
     getLastmessage()
-  }, [fulluserList])
+  }, [fulluserList,session?.user.id])
   
 
   const Searchfiltereduser = filtereduserList.filter((user)=> user.nickname?.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -171,7 +172,7 @@ function Body() {
   useEffect(() => {
     if(!session?.user.id) return ;
     socket.emit('user-connected',session.user.id)
-  }, [session?.user.id])
+  }, [session?.user.id,status])
   
 
   
@@ -191,7 +192,7 @@ function Body() {
       }
     }
     Getmydetails()
-  }, [status])
+  }, [status,session?.user?.email])
 
   return (
     <div className='bg-gradient-to-r from-gray-700 to-gray-600 w-full h-[100vh] flex justify-center items-center'>
@@ -200,7 +201,7 @@ function Body() {
           {
             Mydata.map((user, index) => (
               <div className='flex' key={index}>
-                <img src={`${user.image ? user.image === 'A' ? '/unknown3.jpeg' : user.image : '/unknown3.jpeg'}`} className='w-18 h-18 object-fill rounded-full' />
+                <Image alt='picture' width={500} height={300} src={`${user.image ? user.image === 'A' ? '/unknown3.jpeg' : user.image : '/unknown3.jpeg'}`} className='w-18 h-18 object-fill rounded-full' />
                 <div className='items-start flex-col justify-center flex ml-2 md:ml-4'>
                   <h1 className='font-semibold text-xl font-serif'>{user.nickname}</h1>
                   <p className='text-sm tracking-wider pt-1'>{user.email}</p>
@@ -259,7 +260,7 @@ function Body() {
                 <div className=' w-full h-[100px] flex justify-between px-5 bg-gradient-to-r from-white/90 to-white/70 hover:bg-white'>
                   <div className='flex gap-5 items-center'>
                     <div className=''>
-                      <img src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'}`} className='h-17 w-17 rounded-full' />
+                      <Image alt='image' width={500} height={300} src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'}`} className='h-17 w-17 rounded-full' />
                     </div>
                     <div className=''>
                       <p className={`${unseencount[value._id] > 0 ? 'text-black' : 'text-black/70'} font-semibold text-lg `}>{value.nickname}</p>
@@ -275,7 +276,7 @@ function Body() {
                 </div>
                 <div className='border-b-1 border-gray-300'></div>
               </div></Link> 
-            )) : <div className='flex justify-center items-center w-full h-[91%]'><img src='/nodata2.png' className='w-40 h-40' /></div>
+            )) : <div className='flex justify-center items-center w-full h-[91%]'><Image alt='image' width={500} height={300} src='/nodata2.png' className='w-40 h-40' /></div>
           }
           <div className='border-b-1 border-gray-300'></div>
         </div>
