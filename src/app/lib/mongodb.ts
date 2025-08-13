@@ -1,15 +1,27 @@
 // lib/mongodb.ts
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 
-const MONGODB_URI = process.env.MONGO_URL as string
+const MONGODB_URI = process.env.MONGO_URL as string;
 
 if (!MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable");
+  throw new Error("Please define the MONGO_URL environment variable");
 }
 
-const cached = (global as any).mongoose || { conn: null, promise: null };
+interface MongooseCache {
+  conn: Mongoose | null;
+  promise: Promise<Mongoose> | null;
+}
 
-export async function connectToDB() {
+declare global {
+  var mongooseCache: MongooseCache | undefined;
+}
+
+const cached: MongooseCache = global.mongooseCache || {
+  conn: null,
+  promise: null,
+};
+
+export async function connectToDB(): Promise<Mongoose> {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
@@ -20,5 +32,6 @@ export async function connectToDB() {
   }
 
   cached.conn = await cached.promise;
+  global.mongooseCache = cached;
   return cached.conn;
 }

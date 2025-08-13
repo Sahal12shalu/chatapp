@@ -4,8 +4,9 @@ import { FileUpload } from "../../../../component/ui/fileupload";
 
 export default function FileUploadDemo() {
   const [files, setFiles] = useState<File[]>([]);
-  const handleFileUpload = (files: File[]) => {
-    setFiles(files);
+  const handleFileUpload = (filess: File[]) => {
+    console.log(files)
+    setFiles(filess);
   };
 
   return (

@@ -4,8 +4,9 @@ import { FileUpload } from "../../../../component/ui/fileedit";
 
 export default function FileEdit({onCancel} : {onCancel:()=>void}) {
   const [files, setFiles] = useState<File[]>([]);
-  const handleFileUpload = (files: File[]) => {
-    setFiles(files);
+  const handleFileUpload = (filess: File[]) => {
+    console.log(files)
+    setFiles(filess);
   };
 
   return (
