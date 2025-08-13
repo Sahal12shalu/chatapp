@@ -30,13 +30,14 @@ function Chatpage() {
     _id: string,
     sender: string,
     reciever: string,
-    message: string
+    message: string,
+    timestamp: string
     seen: boolean
   }
 
   const [emoji, Setemoji] = useState(false)
   const [inputText, SetinputText] = useState('')
-  const [message, setMessage] = useState<any[]>([])
+  const [message, setMessage] = useState<MessageType[]>([])
   const [userData, SetuserData] = useState<UserType[]>([])
   const [msgdltpopup, Setmsgdltpopup] = useState(false)
   const [msgId, SetmsgId] = useState<string>('')

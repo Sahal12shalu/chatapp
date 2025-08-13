@@ -3,6 +3,7 @@ import { signOut, useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
 import { FiMenu } from 'react-icons/fi';
 import { useRouter } from 'next/navigation'
+import Image from 'next/image';
 
 function Menupopup() {
 
@@ -27,7 +28,7 @@ function Menupopup() {
        if(!session?.user){
         router.push('/')
        }
-    }, [])
+    }, [router,session?.user])
     
 
     useEffect(() => {
@@ -46,7 +47,7 @@ function Menupopup() {
           }
         }
         Getmydetails()
-      }, [status])
+      }, [status,session?.user?.email])
 
       const Logoutbutton = () =>{
         setShowPopup(false)
@@ -64,7 +65,7 @@ function Menupopup() {
             {
               Mydata.map((value,index)=>(
                 <div key={index} className=' p-6 rounded-lg border-b-1 border-black/20 flex flex-col justify-center items-center'>
-                  <img className='w-40 h-40 rounded-md' src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'  }`} />
+                  <Image alt='image' width={400} height={400} className='w-40 h-40 rounded-md' src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'  }`} />
             <h2 className="text-xl font-semibold pt-2 font-serif">{value.nickname}</h2>
             <p className='mb-4 text-md'>{value.email}</p>
             </div>

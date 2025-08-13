@@ -9,6 +9,7 @@ import { MdCancel } from 'react-icons/md'
 import './page.css'
 import { toast, ToastContainer } from 'react-toastify';
 import FileEdit from '../Imagedit/page';
+import Image from 'next/image';
 const socket = io({
   path: '/api/socket'
 })
@@ -74,7 +75,7 @@ function Profilepage() {
         }
       }
       Getmydetails()
-    }, [status])
+    }, [status,session?.user.id])
 
   const deletebutton = () => {
     Setdeletepopup(true)
@@ -102,7 +103,7 @@ function Profilepage() {
 
         <div className='w-full h-[35%] flex justify-center items-center'>
           <div className='h-41 w-41 relative'>
-            <img src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'}`} className='h-41 w-41 rounded-full' />
+            <Image alt='image' width={400} height={400} src={`${value.image ? value.image === 'A' ? '/unknown3.jpeg' : value.image : '/unknown3.jpeg'}`} className='h-41 w-41 rounded-full' />
             <div onClick={()=>Setimageshowpopup(true)} className='w-8 h-8 rounded-full bg-black absolute bottom-2 right-5 flex justify-center items-center'>
               <FiEdit3 className=' w-4 h-4 text-white rounded-full' />
             </div>

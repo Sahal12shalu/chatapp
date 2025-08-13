@@ -56,7 +56,7 @@ export function initSocket(server : any) {
                 );
 
                 const senderSocketId = [...userScoketMap.entries()].find((
-                    [_, uid]) => uid === senderId)?.[0];
+                    [uid]) => uid === senderId)?.[0];
 
                     if(senderSocketId){
                         io.to(senderSocketId).emit('message-seen', { messageIds,receiverId})

@@ -89,7 +89,7 @@ function Body() {
       SetLastmsgTime(msgTimeObj)
     }
     getLastmessage()
-  }, [fulluserList,session?.user.id])
+  }, [fulluserList,session?.user.id,status])
   
 
   const Searchfiltereduser = filtereduserList.filter((user)=> user.nickname?.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -167,7 +167,7 @@ function Body() {
       SetfiltereduserList((prev) => prev.map((user) => user._id === userId ? {...user,online} : user))
     })
     return() => { socket.off('user-status-changed')}
-  }, [session?.user.id])
+  }, [session?.user.id,status])
 
   useEffect(() => {
     if(!session?.user.id) return ;

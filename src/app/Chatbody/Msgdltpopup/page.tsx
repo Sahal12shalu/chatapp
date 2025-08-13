@@ -5,7 +5,8 @@ type MessageType = {
     _id: string,
     sender: string,
     reciever: string,
-    message: string
+    message: string,
+    timestamp: string,
     seen: boolean
   }
 
