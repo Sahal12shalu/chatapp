@@ -29,7 +29,7 @@ export default function SignupFormDemo() {
         router.push('/Mainpage/Nickname')
       }
     }
-  }, [status])
+  }, [status,session?.user.image,session?.user.nickname])
 
   const [form, Setform] = useState({
     name: '',
