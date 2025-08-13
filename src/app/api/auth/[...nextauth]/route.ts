@@ -6,6 +6,7 @@ import { User } from '../../../../../component/Schema/Userschema'
 import bcrypt from "bcryptjs";
 
 const handler = NextAuth({
+  secret:process.env.NEXTAUTH_SECRET,
   providers: [
   GoogleProvider({
     clientId: process.env.GOOGLE_CLIENT_ID ?? '',
@@ -60,7 +61,6 @@ callbacks: {
 session:{
   strategy:'jwt',
 },
-
 })
 
 export { handler as GET, handler as POST }
