@@ -7,7 +7,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { ToastContainer, toast } from 'react-toastify';
-type archieve = {
+interface archieve {
     userId: string,
     onAllDeletesuccess: () => void;
 }
