@@ -7,12 +7,12 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import { ToastContainer, toast } from 'react-toastify';
-interface archieve {
-    userId: string,
+interface Archieveprops {
+    userId: string;
     onAllDeletesuccess: () => void;
 }
 
-function Menumain({ userId , onAllDeletesuccess }: archieve) {
+export default function Menumain({ userId , onAllDeletesuccess }: Archieveprops) {
 
     const [openPopup, SetopenPopup] = useState<boolean>(false)
     const [archeivepopup, Setarcheivepopup] = useState<boolean>(false)
@@ -120,5 +120,3 @@ function Menumain({ userId , onAllDeletesuccess }: archieve) {
         </div>
     )
 }
-
-export default Menumain
