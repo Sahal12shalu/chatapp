@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import React from "react";
 import { AuroraBackground } from "../../../../component/ui/background";
-import { LoginFormDemo } from "../Login/page";
+import  LoginFormDemo  from "../Login/page";
 
 export default function AuroraBackgroundLogin() {
   return (

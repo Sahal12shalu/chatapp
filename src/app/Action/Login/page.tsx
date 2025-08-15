@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { signIn, useSession } from 'next-auth/react'
 import './page.css'
 
-export function LoginFormDemo() {
+export default function LoginFormDemo() {
   const [email, Setemail] = useState('')
   const [password, Setpassword] = useState('')
   const router = useRouter();
