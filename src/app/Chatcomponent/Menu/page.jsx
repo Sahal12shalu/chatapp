@@ -1,6 +1,6 @@
 'use client'
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { LuMenu } from "react-icons/lu";
 import { MdOutlineClose } from "react-icons/md";
 import { useSession } from 'next-auth/react';
@@ -145,4 +145,11 @@ function Menupage({ menupopup, Setmenupopup, userId, setShowToast, setShowToast2
   )
 }
 
-export default Menupage
+export default function MenuContent(props) {
+  return (
+    <Suspense fallback={<div></div>} >
+      <Menupage {...props} />
+    </Suspense>
+  )
+}
+
