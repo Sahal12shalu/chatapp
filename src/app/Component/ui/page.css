@@ -1,0 +1,53 @@
+.styledbutton:hover {
+ background: rgb(110, 110, 110);
+ background: linear-gradient(0deg, rgb(210, 210, 210) 0%, rgb(189, 189, 189) 100%);
+}
+
+.styledbutton{
+     background: linear-gradient(0deg, rgb(228, 228, 228) 0%, rgb(197, 197, 197) 100%);
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 110px;
+  height: 35px;
+  border: none;
+  padding: 0px 20px;
+  background: linear-gradient(to right, #636363, #363636);
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 0.3s;
+}
+
+.svg {
+  width: 12px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: 0.3s;
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: 0.3s;
+}
+
+.Btn:active {
+  transform: translate(3px, 3px);
+  transition-duration: 0.3s;
+}
