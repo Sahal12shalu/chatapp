@@ -44,7 +44,7 @@ export const FileUpload = ({
     const {data : session , status} = useSession()
 
     const formData = {
-        id: session.user.id ,
+        id: session.user.id || '' ,
         image: 'A'
     }
 
