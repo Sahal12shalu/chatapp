@@ -15,7 +15,7 @@ function MeteorsDemo() {
     const [spin,Setspin] = useState(false)
     const {data : session , status} = useSession()
     const formData = {
-      id: session.user.id,
+      id: session?.user?.id,
       username: username
     }
     const router = useRouter()
