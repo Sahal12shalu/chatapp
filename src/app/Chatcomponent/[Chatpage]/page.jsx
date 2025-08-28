@@ -228,7 +228,7 @@ function Chatpage({ params: paramsPromise }) {
           <div className='md:hidden w-[6%]'></div>
           <MdEmojiEmotions onClick={() => setShowPicker(!showPicker)} className='text-white/80 w-[13%] h-8 max-md:hidden ' />
           <input ref={inputRef} value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder="Type a message"
-            type='text' className='bg-white/90 w-[67%] h-[50%] rounded-2xl pl-2' />
+            type='text' className='bg-white/90 w-[67%] h-[50%] rounded-2xl pl-2 text-black' />
           <button onClick={sendMessage} className="beautiful-button ml-2 h-10 flex justify-center items-center">
             Send
           </button>
