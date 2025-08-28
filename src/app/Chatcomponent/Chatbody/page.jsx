@@ -110,9 +110,9 @@ function Chatbody() {
                backdrop-blur-sm transform-gpu transition-transform duration-300 ease-out animate-fadeIn`}>
             <div className='text-white h-auto w-full border-b-1 border-white/50 p-4 flex justify-end'>
               <MdOutlineClose onClick={()=>Setmenuhome(false)} className='border-1 border-white/50 hover:bg-gray-600 rounded-sm h-6 w-6' /></div>
-            <Link href='/Chatcomponent/Archieve'><button className='text-white hover:bg-gray-600 h-auto w-full border-b-1 border-white/50 px-4 py-3 flex text-[18px]' style={{ fontFamily: 'cursive' }}>Archieve Page</button></Link>
-            <Link href='/Profile/Profilepage'><button className='text-white hover:bg-gray-600 h-auto w-full border-b-1 border-white/50 px-4 py-3 flex text-[18px] ' style={{ fontFamily: 'cursive' }}>Profile</button></Link>
-            <Link href='/'><button className='text-white hover:bg-gray-600 h-auto w-full border-b-1 border-white/50 px-4 py-3 flex text-[18px] ' style={{ fontFamily: 'cursive' }}>Logout</button></Link>
+            <Link href='/Chatcomponent/Archieve'><button className='text-white hover:bg-gray-600 h-auto w-full border-b-1 border-white/50 px-4 py-3 flex text-[18px]'>Archieve Page</button></Link>
+            <Link href='/Profile/Profilepage'><button className='text-white hover:bg-gray-600 h-auto w-full border-b-1 border-white/50 px-4 py-3 flex text-[18px] '>Profile</button></Link>
+            <Link href='/'><button className='text-white hover:bg-gray-600 h-auto w-full border-b-1 border-white/50 px-4 py-3 flex text-[18px] '>Logout</button></Link>
           </div>
         }
         <div className='w-full h-[20%] border-b-1 border-white/40'>
